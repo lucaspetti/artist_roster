@@ -1,24 +1,35 @@
 {
-  "application.js": "/packs/js/application-4ff707c731c80cbe6d96.js",
-  "application.js.map": "/packs/js/application-4ff707c731c80cbe6d96.js.map",
+  "application.js": "/packs/js/application-29c0599e066d4c296a2a.js",
+  "application.js.map": "/packs/js/application-29c0599e066d4c296a2a.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-4ff707c731c80cbe6d96.js"
+        "/packs/js/application-29c0599e066d4c296a2a.js"
       ],
       "js.map": [
-        "/packs/js/application-4ff707c731c80cbe6d96.js.map"
+        "/packs/js/application-29c0599e066d4c296a2a.js.map"
       ]
     },
     "rails_admin": {
+      "css": [
+        "/packs/css/rails_admin-5b58ddad.css"
+      ],
       "js": [
-        "/packs/js/rails_admin-f10d0b019704df25bdf2.js"
+        "/packs/js/rails_admin-47da9fe6b55d14b6d157.js"
       ],
       "js.map": [
-        "/packs/js/rails_admin-f10d0b019704df25bdf2.js.map"
+        "/packs/js/rails_admin-47da9fe6b55d14b6d157.js.map"
       ]
     }
   },
-  "rails_admin.js": "/packs/js/rails_admin-f10d0b019704df25bdf2.js",
-  "rails_admin.js.map": "/packs/js/rails_admin-f10d0b019704df25bdf2.js.map"
+  "media/webfonts/fa-solid-900.eot": "/packs/media/webfonts/fa-solid-900-0c6bfc66.eot",
+  "media/webfonts/fa-solid-900.svg": "/packs/media/webfonts/fa-solid-900-37bc7099.svg",
+  "media/webfonts/fa-solid-900.ttf": "/packs/media/webfonts/fa-solid-900-b9625119.ttf",
+  "media/webfonts/fa-solid-900.woff": "/packs/media/webfonts/fa-solid-900-d745348d.woff",
+  "media/webfonts/fa-solid-900.woff2": "/packs/media/webfonts/fa-solid-900-d824df7e.woff2",
+  "rails_admin.css": "/packs/css/rails_admin-5b58ddad.css",
+  "rails_admin.js": "/packs/js/rails_admin-47da9fe6b55d14b6d157.js",
+  "rails_admin.js.map": "/packs/js/rails_admin-47da9fe6b55d14b6d157.js.map",
+  "vendors~actioncable.js": "/packs/js/vendors~actioncable-17dabba4b0a11eb86154.chunk.js",
+  "vendors~actioncable.js.map": "/packs/js/vendors~actioncable-17dabba4b0a11eb86154.chunk.js.map"
 }
