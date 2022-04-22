@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_22_202521) do
+ActiveRecord::Schema.define(version: 2022_04_22_202752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,19 @@ ActiveRecord::Schema.define(version: 2022_04_22_202521) do
     t.index ["month_streaming_import_id"], name: "index_monthly_streamings_on_month_streaming_import_id"
   end
 
+  create_table "playlist_data_imports", force: :cascade do |t|
+    t.string "file"
+    t.bigint "artist_id", null: false
+    t.integer "month"
+    t.integer "year"
+    t.datetime "ran_at"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_playlist_data_imports_on_artist_id"
+    t.index ["user_id"], name: "index_playlist_data_imports_on_user_id"
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.string "name", null: false
     t.string "author", null: false
@@ -94,4 +107,6 @@ ActiveRecord::Schema.define(version: 2022_04_22_202521) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "month_streaming_imports", "artists"
   add_foreign_key "monthly_streamings", "month_streaming_imports"
+  add_foreign_key "playlist_data_imports", "artists"
+  add_foreign_key "playlist_data_imports", "users"
 end
