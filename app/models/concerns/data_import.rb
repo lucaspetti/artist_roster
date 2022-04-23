@@ -13,7 +13,7 @@ module DataImport
   end
 
   def record_job
-    self.class.name.concat('Job').constantize
+    "#{self.class.name}Job".constantize
   end
 
   def file_format
