@@ -33,37 +33,6 @@ namespace :sync_artists do
     end
   end
 
-  desc 'Downloads timeline files for all artists'
-  task download_timeline_files: :environment do
-    check_date_for_schedule(3)
-
-    puts 'Starting downloads for artists with spotify ID...'
-
-    Artist.where.not(spotify_id: nil).each do |artist|
-      puts "Downloading timeline file for #{artist.name}..."
-
-      timeline_downloader = Download::Timeline.new(artist)
-      timeline_downloader.call
-
-      puts 'Ran download'
-    end
-
-    puts 'Done.'
-  end
-
-  desc 'Downloads playlist file for one artist'
-  task download_playlist_file: :environment do
-    check_date_for_schedule(1)
-
-    artist = Artist.find(1)
-    puts "starting Download for #{artist.name}"
-
-    playlist_downloader = Download::PlaylistData.new(artist)
-    playlist_downloader.call
-
-    puts 'Ran download'
-  end
-
   desc 'Syncs artist releases'
   task releases: :environment do
     check_date_for_schedule(2)
