@@ -5,6 +5,8 @@ require 'rspotify'
 namespace :sync_artists do
   desc 'Fetches data for artists from Spotify'
   task fetch_data: :environment do
+    check_date_for_schedule(1)
+
     print 'Authenticating...'
     RSpotify.authenticate(ENV['SPOTIFY_APP_CLIENT_ID'], ENV['SPOTIFY_APP_CLIENT_SECRET'])
     puts 'Done'
@@ -33,6 +35,8 @@ namespace :sync_artists do
 
   desc 'Downloads timeline files for all artists'
   task download_timeline_files: :environment do
+    check_date_for_schedule(3)
+
     puts 'Starting downloads for artists with spotify ID...'
 
     Artist.where.not(spotify_id: nil).each do |artist|
@@ -49,6 +53,8 @@ namespace :sync_artists do
 
   desc 'Downloads playlist file for one artist'
   task download_playlist_file: :environment do
+    check_date_for_schedule(1)
+
     artist = Artist.find(1)
     puts "starting Download for #{artist.name}"
 
@@ -60,6 +66,8 @@ namespace :sync_artists do
 
   desc 'Syncs artist releases'
   task releases: :environment do
+    check_date_for_schedule(2)
+
     print 'Authenticating...'
     RSpotify.authenticate(ENV['SPOTIFY_APP_CLIENT_ID'], ENV['SPOTIFY_APP_CLIENT_SECRET'])
     puts 'Done'
@@ -77,5 +85,10 @@ namespace :sync_artists do
     end
 
     puts 'Done.'
+  end
+
+  def check_date_for_schedule(day_of_month)
+    # Adapt task to only run on a given day of month on scheduler
+    abort("Exiting: Not day #{day_of_month} of the month") if Date.today.day != day_of_month
   end
 end
