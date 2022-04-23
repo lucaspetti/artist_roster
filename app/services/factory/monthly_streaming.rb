@@ -30,6 +30,7 @@ module Factory
 
     def monthly_streaming
       @monthly_streaming = ::MonthlyStreaming.find_or_create_by(
+        artist_id: artist_id,
         month: @date.month,
         year: @date.year,
         month_streaming_import_id: @data_import.id

@@ -6,6 +6,7 @@ class CreateMonthlyStreamings < ActiveRecord::Migration[6.0]
       t.integer :streams, default: 0
       t.integer :listeners, default: 0
       t.integer :followers, default: 0
+      t.references :artist, null: false, foreign_key: true
       t.references :month_streaming_import, null: false, foreign_key: true
 
       t.timestamps

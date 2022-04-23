@@ -8,5 +8,6 @@ FactoryBot.define do
     listeners { 1 }
     followers { 1 }
     month_streaming_import
+    artist
   end
 end

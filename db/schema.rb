@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(version: 2022_04_22_203227) do
     t.integer "streams", default: 0
     t.integer "listeners", default: 0
     t.integer "followers", default: 0
+    t.bigint "artist_id", null: false
     t.bigint "month_streaming_import_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_monthly_streamings_on_artist_id"
     t.index ["month_streaming_import_id"], name: "index_monthly_streamings_on_month_streaming_import_id"
   end
 
@@ -122,6 +124,7 @@ ActiveRecord::Schema.define(version: 2022_04_22_203227) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "month_streaming_imports", "artists"
+  add_foreign_key "monthly_streamings", "artists"
   add_foreign_key "monthly_streamings", "month_streaming_imports"
   add_foreign_key "playlist_data", "artists"
   add_foreign_key "playlist_data", "playlist_data_imports"
