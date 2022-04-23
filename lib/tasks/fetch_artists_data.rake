@@ -5,12 +5,12 @@ require 'rspotify'
 namespace :sync_artists do
   desc 'Fetches data for artists from Spotify'
   task fetch_data: :environment do
-    puts 'Authenticating...'
+    print 'Authenticating...'
     RSpotify.authenticate(ENV['SPOTIFY_APP_CLIENT_ID'], ENV['SPOTIFY_APP_CLIENT_SECRET'])
-    print 'Done'
+    puts 'Done'
 
     Artist.all.each do |artist|
-      puts "Fetching data for #{artist}..."
+      puts "Fetching data for #{artist.name}..."
 
       if artist.spotify_id
         artist_data = RSpotify::Artist.find(artist.spotify_id)
@@ -60,12 +60,12 @@ namespace :sync_artists do
 
   desc 'Syncs artist releases'
   task releases: :environment do
-    puts 'Authenticating...'
+    print 'Authenticating...'
     RSpotify.authenticate(ENV['SPOTIFY_APP_CLIENT_ID'], ENV['SPOTIFY_APP_CLIENT_SECRET'])
-    print 'Done'
+    puts 'Done'
 
     Artist.where.not(spotify_id: nil).each do |artist|
-      puts "Fetching data for #{artist}..."
+      puts "Fetching data for #{artist.name}..."
 
       releases = RSpotify::Artist.find(artist.spotify_id).albums
 
