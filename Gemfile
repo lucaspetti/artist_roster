@@ -14,8 +14,9 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
-gem 'rails_admin'
 gem 'devise'
+gem 'jwt'
+gem 'rails_admin'
 gem 'rspotify'
 gem 'whenever', require: false
 

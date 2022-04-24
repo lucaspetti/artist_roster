@@ -364,6 +364,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   jbuilder (~> 2.7)
+  jwt
   listen (~> 3.2)
   pg
   pry
