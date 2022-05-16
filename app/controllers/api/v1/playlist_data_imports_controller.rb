@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'json_web_token'
-
 module Api
   module V1
     class PlaylistDataImportsController < ActionController::API
+      include JwtAuthentication
+
       before_action :authenticate_user
 
       def create
@@ -24,24 +24,6 @@ module Api
       end
 
       private
-
-      def authenticate_user
-        # TODO: improve user authentication for api
-        token = request.headers['Authorization']
-
-        payload = JsonWebToken.decode(token)
-        if payload.nil?
-          render json: { message: 'unauthorized' }, status: :unauthorized
-          return
-        end
-
-        @user = User.find_by(payload)
-
-        if @user.nil?
-          render json: { message: 'unauthorized' }, status: :unauthorized
-        end
-
-      end
 
       def playlist_data_import_params
         params.permit(:artist_id, :month, :year, :file)
