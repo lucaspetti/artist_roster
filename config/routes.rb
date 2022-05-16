@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'playlist_data_imports', to: 'playlist_data_imports#create'
+      post 'month_streaming_imports', to: 'month_streaming_imports#create'
     end
   end
 end
