@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'rspotify'
+require 'helpers'
+
+include Helpers
 
 namespace :sync_artists do
   desc 'Fetches data for artists from Spotify'
@@ -54,10 +57,5 @@ namespace :sync_artists do
     end
 
     puts 'Done.'
-  end
-
-  def check_date_for_schedule(day_of_month)
-    # Adapt task to only run on a given day of month on scheduler
-    abort("Exiting: Not day #{day_of_month} of the month") if Date.today.day != day_of_month
   end
 end

@@ -9,5 +9,6 @@ FactoryBot.define do
     streams { 1 }
     listeners { 1 }
     followers { 1 }
+    playlist_data_import
   end
 end
