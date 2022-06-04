@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_23_103517) do
+ActiveRecord::Schema.define(version: 2022_06_04_093637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,11 +90,10 @@ ActiveRecord::Schema.define(version: 2022_04_23_103517) do
     t.integer "month", null: false
     t.integer "year", null: false
     t.datetime "ran_at"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", default: 1, null: false
     t.index ["artist_id"], name: "index_playlist_data_imports_on_artist_id"
-    t.index ["user_id"], name: "index_playlist_data_imports_on_user_id"
   end
 
   create_table "playlists", force: :cascade do |t|
@@ -106,6 +105,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_103517) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "spotify_id"
   end
 
   create_table "releases", force: :cascade do |t|
@@ -143,6 +143,5 @@ ActiveRecord::Schema.define(version: 2022_04_23_103517) do
   add_foreign_key "playlist_data", "playlist_data_imports"
   add_foreign_key "playlist_data", "playlists"
   add_foreign_key "playlist_data_imports", "artists"
-  add_foreign_key "playlist_data_imports", "users"
   add_foreign_key "releases", "artists"
 end
