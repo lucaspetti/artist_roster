@@ -8,7 +8,7 @@ include Helpers
 namespace :update_playlists do
   desc 'Fetches data for artists from Spotify'
   task fetch_data: :environment do
-    check_date_for_schedule(5)
+    check_date_for_schedule(3)
 
     print 'Authenticating...'
     RSpotify.authenticate(ENV['SPOTIFY_APP_CLIENT_ID'], ENV['SPOTIFY_APP_CLIENT_SECRET'])
