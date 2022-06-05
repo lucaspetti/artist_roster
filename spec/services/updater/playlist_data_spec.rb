@@ -13,19 +13,11 @@ RSpec.describe Updater::PlaylistData do
     )
   end
 
-  let(:spotify_playlist_data_updater) { described_class.new(playlist_spotify_data) }
+  let(:spotify_playlist_data_updater) { described_class.new(playlist_spotify_data, playlist) }
   let(:update) { spotify_playlist_data_updater.update! }
 
   describe '#update!' do
     before { Timecop.freeze(Time.local(2020, 9, 1, 12, 0, 0)) }
-
-    context 'playlist not found' do
-      it 'raises an error if playlist was not found' do
-        playlist.delete
-        expect { update }.to raise_error
-      end
-
-    end
 
     context 'success' do
       let!(:playlist_data) do

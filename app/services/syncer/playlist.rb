@@ -17,7 +17,7 @@ module Syncer
 
         next if playlist_spotify_data.nil?
 
-        updater = Updater::PlaylistData.new(playlist_spotify_data)
+        updater = Updater::PlaylistData.new(playlist_spotify_data, playlist)
         updater.update!
       end
     end

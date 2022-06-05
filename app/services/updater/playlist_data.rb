@@ -2,7 +2,8 @@
 
 module Updater
   class PlaylistData
-    def initialize(playlist_spotify_data)
+    def initialize(playlist_spotify_data, playlist)
+      @playlist = playlist
       @playlist_spotify_data = playlist_spotify_data
     end
 
@@ -11,12 +12,11 @@ module Updater
       month = last_month.month
       year = last_month.year
 
-      playlist = Playlist.find_by_name!(@playlist_spotify_data.name)
-      playlist_data = PlaylistDatum.where(playlist: playlist, month: month, year: year).last
+      playlist_data = PlaylistDatum.where(playlist: @playlist, month: month, year: year).last
       return if playlist_data.nil?
 
       playlist_data.update!(followers: @playlist_spotify_data.followers['total'])
-      playlist.update!(mapped_attributes)
+      @playlist.update!(mapped_attributes)
     end
 
     def mapped_attributes
